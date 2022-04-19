@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './../app-routing.module';
 import { NgModule } from '@angular/core';
 
@@ -28,6 +29,6 @@ import { HeaderComponent } from './header/header.component';
     GenresComponent,
     ErrorPageComponent,
   ],
-  imports: [AppRoutingModule],
+  imports: [AppRoutingModule, CommonModule],
 })
 export class SharedModule {}
