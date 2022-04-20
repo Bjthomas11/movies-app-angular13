@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
+import { ItemComponent } from './components/items-banner/item/item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SliderComponent } from './components/slider/slider.component';
     GenresComponent,
     ErrorPageComponent,
     SliderComponent,
+    ItemsBannerComponent,
+    ItemComponent,
   ],
   exports: [
     HeaderComponent,
@@ -30,6 +34,7 @@ import { SliderComponent } from './components/slider/slider.component';
     TvShowsComponent,
     GenresComponent,
     ErrorPageComponent,
+    ItemsBannerComponent,
   ],
   imports: [AppRoutingModule, CommonModule],
 })

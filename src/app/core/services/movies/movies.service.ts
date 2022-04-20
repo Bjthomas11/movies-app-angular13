@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
-  getMovies() {
+  getMovies(type: string) {
     return this.http.get(
-      'https://api.themoviedb.org/3/movie/popular?api_key=305cf5d9dcc3ea93b3a6411ba033664b'
+      `${environment.BASE_URL}/movie/${type}?api_key=${environment.KEY}`
     );
   }
 }
