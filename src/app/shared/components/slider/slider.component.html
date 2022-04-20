@@ -1,28 +1,27 @@
 <div class="slider">
-  <div class="slide">
+  <div class="slide" *ngFor="let movie of movies">
     <div class="slide-bg">
       <img
-        src="https://image.tmdb.org/t/p/original/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
-        alt="original_title"
+        [src]="'https://image.tmdb.org/t/p/original/' + movie.backdrop_path"
+        alt="{{ movie.original_title }}"
       />
     </div>
     <div class="slide-info">
-      <h2 class="name">Spider-Man: No Way Home</h2>
+      <h2 class="name">{{ movie.title }}</h2>
       <div class="meta">
         <div class="info">
           <span class="rating">
             <span class="icon">star</span>
-            <span class="rating-value">10</span>
+            <span class="rating-value">{{ movie.vote_average }}</span>
             <span>/10</span>
           </span>
-          <span class="review-count">11,703 Reviews</span
-          ><span class="year-released">2022</span>
+          <span class="review-count">{{ movie.vote_count }} Reviews</span
+          ><span class="year-released">{{
+            movie.release_date | date: "yyyy"
+          }}</span>
         </div>
         <div class="description mt-6">
-          Peter Parker is unmasked and no longer able to separate his normal
-          life from the high-stakes of being a super-hero. When he asks for help
-          from Doctor Strange the stakes become even more dangerous, forcing him
-          to discover what it truly means to be Spider-Man.
+          {{ movie.overview }}
         </div>
       </div>
     </div>
