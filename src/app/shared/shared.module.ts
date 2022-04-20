@@ -9,6 +9,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
     TvShowsComponent,
     GenresComponent,
     ErrorPageComponent,
+    SliderComponent,
   ],
   exports: [
     HeaderComponent,
