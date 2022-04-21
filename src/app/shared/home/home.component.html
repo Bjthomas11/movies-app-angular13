@@ -1,4 +1,3 @@
-<!-- <p *ngFor="let movie of movies">{{ movie.original_title }}</p> -->
 <comp-slider [movies]="popularMovies"></comp-slider>
 <comp-items-banner
   [items]="upcomingMovies"
@@ -9,4 +8,7 @@
   title="Top Rated Movies"
 ></comp-items-banner>
 <!-- tv shows -->
-<comp-items-banner></comp-items-banner>
+<comp-items-banner
+  [items]="popularTvShows"
+  title="TV Shows"
+></comp-items-banner>
