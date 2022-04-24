@@ -1,5 +1,4 @@
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
-import { TvShowsComponent } from './shared/tv-shows/tv-shows.component';
 import { GenresComponent } from './shared/genres/genres.component';
 
 import { MoviesComponent } from './shared/movies/movies.component';
@@ -10,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent },
-  { path: 'tv-shows', component: TvShowsComponent },
   { path: 'genres', component: GenresComponent },
   { path: '404', component: ErrorPageComponent },
   { path: '**', redirectTo: '404' },

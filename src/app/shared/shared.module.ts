@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './../app-routing.module';
 import { NgModule } from '@angular/core';
 
-import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GenresComponent } from './genres/genres.component';
 import { MoviesComponent } from './movies/movies.component';
@@ -19,7 +18,6 @@ import { ItemComponent } from './components/items-banner/item/item.component';
     FooterComponent,
     HomeComponent,
     MoviesComponent,
-    TvShowsComponent,
     GenresComponent,
     ErrorPageComponent,
     SliderComponent,
@@ -31,7 +29,6 @@ import { ItemComponent } from './components/items-banner/item/item.component';
     FooterComponent,
     HomeComponent,
     MoviesComponent,
-    TvShowsComponent,
     GenresComponent,
     ErrorPageComponent,
     ItemsBannerComponent,
