@@ -14,12 +14,7 @@ import {
   styleUrls: ['./slider.component.scss'],
   animations: [
     trigger('slide', [
-      state(
-        'void',
-        style({
-          opacity: 0,
-        })
-      ),
+      state('void', style({ opacity: 0 })),
       transition('void <=> *', [animate('1s')]),
     ]),
   ],

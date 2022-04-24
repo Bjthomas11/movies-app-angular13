@@ -12,4 +12,14 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  page: number;
+  results: Movie[];
+  total_results: number;
+  total_pages: number;
+}
+export interface MovieDto {
+  page: number;
+  results: Movie[];
+  total_results: number;
+  total_pages: number;
 }
