@@ -1,4 +1,4 @@
-import { Movie, MovieVideo } from './../../../core/models/movie';
+import { Movie, MovieVideo, MovieImages } from './../../../core/models/movie';
 import { MoviesService } from './../../../core/services/movies/movies.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailComponent implements OnInit {
   singleMovie: Movie | null = null;
   movieVideos: MovieVideo[] = [];
+  movieImages: MovieImages | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,20 +23,27 @@ export class MovieDetailComponent implements OnInit {
       // console.log(id);
       this.getMovie(id);
       this.getMovieVideos(id);
+      this.getMovieImages(id);
     });
   }
 
   getMovie(id: string) {
     this.moviesService.getMovieDetail(id).subscribe((movie: any) => {
       this.singleMovie = movie;
-      console.log(this.singleMovie);
     });
   }
 
   getMovieVideos(id: string) {
     this.moviesService.getMovieDetailVideo(id).subscribe((movieVideo: any) => {
       this.movieVideos = movieVideo.results;
-      console.log(this.movieVideos);
     });
+  }
+
+  getMovieImages(id: string) {
+    this.moviesService
+      .getMovieDetailImages(id)
+      .subscribe((movieImages: any) => {
+        this.movieImages = movieImages;
+      });
   }
 }

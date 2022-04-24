@@ -13,6 +13,7 @@ import { ItemsBannerComponent } from './components/items-banner/items-banner.com
 import { ItemComponent } from './components/items-banner/item/item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
+import { ImageModule } from 'primeng/image';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { IframeComponent } from './components/iframe/iframe.component';
 
@@ -39,6 +40,12 @@ import { IframeComponent } from './components/iframe/iframe.component';
     ErrorPageComponent,
     ItemsBannerComponent,
   ],
-  imports: [AppRoutingModule, CommonModule, PaginatorModule, TabViewModule],
+  imports: [
+    AppRoutingModule,
+    CommonModule,
+    PaginatorModule,
+    TabViewModule,
+    ImageModule,
+  ],
 })
 export class SharedModule {}
