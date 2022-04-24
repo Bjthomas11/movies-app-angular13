@@ -109,4 +109,12 @@
       </div>
     </ng-template>
   </p-carousel>
+  <div class="container similar">
+    <h2>Similar Movies</h2>
+    <div class="grid">
+      <div class="col-6 md:col-3 lg:col-3" *ngFor="let movie of similarMovies">
+        <comp-item [item]="movie"></comp-item>
+      </div>
+    </div>
+  </div>
 </ng-container>

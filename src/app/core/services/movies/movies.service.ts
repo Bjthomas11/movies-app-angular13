@@ -53,6 +53,18 @@ export class MoviesService {
     );
   }
 
+  getSimilarMovies(id: string) {
+    return this.http
+      .get<Movie>(
+        `${environment.BASE_URL}/movie/${id}/similar?api_key=${environment.KEY}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
+  }
+
   searchMovies(page: number) {
     return this.http
       .get<MovieDto>(
