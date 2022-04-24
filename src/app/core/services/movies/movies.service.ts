@@ -4,6 +4,7 @@ import {
   MovieDto,
   SingleMovieVideos,
   MovieImages,
+  MovieCredits,
 } from './../../models/movie';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -43,6 +44,12 @@ export class MoviesService {
   getMovieDetailImages(id: string) {
     return this.http.get<MovieImages>(
       `${environment.BASE_URL}/movie/${id}/images?api_key=${environment.KEY}`
+    );
+  }
+
+  getMovieDetailCredits(id: string) {
+    return this.http.get<MovieCredits>(
+      `${environment.BASE_URL}/movie/${id}/credits?api_key=${environment.KEY}`
     );
   }
 

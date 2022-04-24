@@ -14,6 +14,7 @@ import { ItemComponent } from './components/items-banner/item/item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 import { ImageModule } from 'primeng/image';
+import { CarouselModule } from 'primeng/carousel';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { IframeComponent } from './components/iframe/iframe.component';
 
@@ -46,6 +47,7 @@ import { IframeComponent } from './components/iframe/iframe.component';
     PaginatorModule,
     TabViewModule,
     ImageModule,
+    CarouselModule,
   ],
 })
 export class SharedModule {}
