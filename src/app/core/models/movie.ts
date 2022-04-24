@@ -16,10 +16,21 @@ export interface Movie {
   results: Movie[];
   total_results: number;
   total_pages: number;
+  original_language: string;
+  revenue: number;
+  status: string;
+  runtime: number;
+  tagline: string;
+  genres: Genre[];
 }
 export interface MovieDto {
   page: number;
   results: Movie[];
   total_results: number;
   total_pages: number;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
 }
