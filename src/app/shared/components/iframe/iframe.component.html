@@ -5,22 +5,12 @@
     <iframe
       width="100%"
       height="315"
-      [src]="getSafeURL('https://www.youtube.com/embed/' + key)"
+      [src]="videoURL"
       title="{{ title }}"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
   </div>
-  <div *ngSwitchCase="'Vimeo'">
-    <iframe
-      width="100%"
-      height="315"
-      [src]="getSafeURL('https://player.vimeo.com/video/' + key)"
-      title="{{ title }}"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </div>
+  <div *ngSwitchCase="'Vimeo'"></div>
 </ng-container>
