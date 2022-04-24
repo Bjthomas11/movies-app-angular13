@@ -3,7 +3,6 @@ import { MovieDto } from './../../models/movie';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
-import { Movie } from '../../models/movie';
 import { switchMap, of } from 'rxjs';
 
 @Injectable({
@@ -20,6 +19,18 @@ export class MoviesService {
       .pipe(
         switchMap((res) => {
           return of(res.results.slice(0, count));
+        })
+      );
+  }
+
+  searchMovies(page: number) {
+    return this.http
+      .get<MovieDto>(
+        `${environment.BASE_URL}/movie/popular?page=${page}&api_key=${environment.KEY}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
         })
       );
   }

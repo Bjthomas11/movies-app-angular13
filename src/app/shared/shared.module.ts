@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { ItemComponent } from './components/items-banner/item/item.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,6 @@ import { ItemComponent } from './components/items-banner/item/item.component';
     ErrorPageComponent,
     ItemsBannerComponent,
   ],
-  imports: [AppRoutingModule, CommonModule],
+  imports: [AppRoutingModule, CommonModule, PaginatorModule],
 })
 export class SharedModule {}
