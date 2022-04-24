@@ -12,6 +12,8 @@ import { SliderComponent } from './components/slider/slider.component';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { ItemComponent } from './components/items-banner/item/item.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { TabViewModule } from 'primeng/tabview';
+import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { PaginatorModule } from 'primeng/paginator';
     SliderComponent,
     ItemsBannerComponent,
     ItemComponent,
+    MovieDetailComponent,
   ],
   exports: [
     HeaderComponent,
@@ -34,6 +37,6 @@ import { PaginatorModule } from 'primeng/paginator';
     ErrorPageComponent,
     ItemsBannerComponent,
   ],
-  imports: [AppRoutingModule, CommonModule, PaginatorModule],
+  imports: [AppRoutingModule, CommonModule, PaginatorModule, TabViewModule],
 })
 export class SharedModule {}

@@ -1,3 +1,4 @@
+import { MovieDetailComponent } from './shared/movies/movie-detail/movie-detail.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { GenresComponent } from './shared/genres/genres.component';
 
@@ -9,9 +10,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent },
+  { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'genres', component: GenresComponent },
-  { path: '404', component: ErrorPageComponent },
-  { path: '**', redirectTo: '404' },
+  // { path: '404', component: ErrorPageComponent },
+  // { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

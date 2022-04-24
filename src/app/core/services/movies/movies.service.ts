@@ -1,5 +1,5 @@
 import { TvDto } from './../../models/tv';
-import { MovieDto } from './../../models/movie';
+import { Movie, MovieDto } from './../../models/movie';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -21,6 +21,12 @@ export class MoviesService {
           return of(res.results.slice(0, count));
         })
       );
+  }
+
+  getMovieDetail(id: string) {
+    return this.http.get<Movie>(
+      `${environment.BASE_URL}/movie/${id}?api_key=${environment.KEY}`
+    );
   }
 
   searchMovies(page: number) {

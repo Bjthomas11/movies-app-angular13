@@ -1,0 +1,8 @@
+<ng-container *ngIf="singleMovie">
+  <comp-slider [movies]="[singleMovie]" [isBanner]="true"></comp-slider>
+  <p-tabView>
+    <p-tabPanel header="Overview"> {{ singleMovie.overview }} </p-tabPanel>
+    <p-tabPanel header="Videos"> Content 2 </p-tabPanel>
+    <p-tabPanel header="Photos"> Content 3 </p-tabPanel>
+  </p-tabView>
+</ng-container>
