@@ -1,5 +1,5 @@
 import { TvDto } from './../../models/tv';
-import { Movie, MovieDto } from './../../models/movie';
+import { Movie, MovieDto, SingleMovieVideos } from './../../models/movie';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
@@ -26,6 +26,12 @@ export class MoviesService {
   getMovieDetail(id: string) {
     return this.http.get<Movie>(
       `${environment.BASE_URL}/movie/${id}?api_key=${environment.KEY}`
+    );
+  }
+
+  getMovieDetailVideo(id: string) {
+    return this.http.get<SingleMovieVideos>(
+      `${environment.BASE_URL}/movie/${id}/videos?api_key=${environment.KEY}`
     );
   }
 

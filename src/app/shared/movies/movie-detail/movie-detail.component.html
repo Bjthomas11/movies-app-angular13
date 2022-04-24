@@ -64,7 +64,19 @@
         </div>
       </div>
     </p-tabPanel>
-    <p-tabPanel header="Videos"> Content 2 </p-tabPanel>
+    <p-tabPanel header="Videos">
+      <div class="grid">
+        <ng-container *ngFor="let movie of movieVideos">
+          <div class="col-12 md:col-4 lg:col-4">
+            <comp-iframe
+              [site]="movie.site"
+              [key]="movie.key"
+              [title]="movie.name"
+            ></comp-iframe>
+          </div>
+        </ng-container>
+      </div>
+    </p-tabPanel>
     <p-tabPanel header="Photos"> Content 3 </p-tabPanel>
   </p-tabView>
 </ng-container>

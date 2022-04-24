@@ -14,6 +14,7 @@ import { ItemComponent } from './components/items-banner/item/item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { IframeComponent } from './components/iframe/iframe.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
     ItemsBannerComponent,
     ItemComponent,
     MovieDetailComponent,
+    IframeComponent,
   ],
   exports: [
     HeaderComponent,
