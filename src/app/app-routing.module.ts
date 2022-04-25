@@ -10,10 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent },
+  { path: 'movies/genres/:genreId', component: MoviesComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'genres', component: GenresComponent },
   // { path: '404', component: ErrorPageComponent },
-  // { path: '**', redirectTo: '404' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

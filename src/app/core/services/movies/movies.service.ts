@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { switchMap, of } from 'rxjs';
+import { GenresDto } from '../../models/genre';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ import { switchMap, of } from 'rxjs';
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
-  getMovies(type: string, count: number = 12) {
+  getMovies(type: string = 'upcoming', count: number = 12) {
     return this.http
       .get<MovieDto>(
         `${environment.BASE_URL}/movie/${type}?api_key=${environment.KEY}`
@@ -55,8 +56,32 @@ export class MoviesService {
 
   getSimilarMovies(id: string) {
     return this.http
-      .get<Movie>(
+      .get<MovieDto>(
         `${environment.BASE_URL}/movie/${id}/similar?api_key=${environment.KEY}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results.slice(0, 12));
+        })
+      );
+  }
+
+  getMoviesGenres() {
+    return this.http
+      .get<GenresDto>(
+        `${environment.BASE_URL}/genre/movie/list?api_key=${environment.KEY}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.genres);
+        })
+      );
+  }
+
+  getMoviesByGenre(genreId: string, pageNumber: number) {
+    return this.http
+      .get<MovieDto>(
+        `${environment.BASE_URL}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${environment.KEY}`
       )
       .pipe(
         switchMap((res) => {
