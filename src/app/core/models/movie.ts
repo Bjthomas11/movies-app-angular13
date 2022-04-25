@@ -1,8 +1,11 @@
+import { Item } from '../../shared/components/items-banner/item/Item';
+
 export interface Movie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
   id: number;
+  original_language: string;
   original_title: string;
   overview: string;
   popularity: number;
@@ -12,17 +15,12 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
-  page: number;
-  results: Movie[];
-  total_results: number;
-  total_pages: number;
-  original_language: string;
   revenue: number;
-  status: string;
   runtime: number;
-  tagline: string;
+  status: string;
   genres: Genre[];
 }
+
 export interface MovieDto {
   page: number;
   results: Movie[];
@@ -35,15 +33,14 @@ export interface Genre {
   name: string;
 }
 
-export interface SingleMovieVideos {
+export interface MovieVideoDto {
   id: number;
-  results: MovieVideo;
+  results: MovieVideo[];
 }
 
 export interface MovieVideo {
-  key: string;
   site: string;
-  name: string;
+  key: string;
 }
 
 export interface MovieImages {
@@ -58,3 +55,17 @@ export interface MovieCredits {
     profile_path: string;
   }[];
 }
+
+export const mapMovieToItem = (movie: Movie): Item => {
+  return {
+    id: movie.id,
+    title: movie.title,
+    poster_path: movie.poster_path,
+    vote_average: movie.vote_average,
+    backdrop_path: movie.backdrop_path,
+    vote_count: movie.vote_count,
+    release_date: movie.release_date,
+    overview: movie.overview,
+    routePath: '/movie/' + movie.id,
+  };
+};

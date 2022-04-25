@@ -1,5 +1,9 @@
 <ng-container *ngIf="singleTvShow">
-  <comp-slider [movies]="[singleTvShow]" [isBanner]="true"></comp-slider>
+  <comp-slider
+    *ngIf="tvShowBanner"
+    [items]="[tvShowBanner]"
+    [isBanner]="true"
+  ></comp-slider>
   <p-tabView>
     <p-tabPanel header="Overview">
       <div class="grid">
@@ -7,21 +11,14 @@
           <img
             class="poster"
             [src]="
-              'https://image.tmdb.org/t/p/original/' +
-              singleTvShow?.backdrop_path
+              'https://image.tmdb.org/t/p/original/' + singleTvShow?.poster_path
             "
-            alt="{{ singleTvShow?.original_title }}"
+            alt="{{ singleTvShow?.name }}"
           />
         </div>
         <div class="col-12 md:col-9 lg:col-9">
           <h2>Overview</h2>
           <p class="overview">{{ singleTvShow.overview }}</p>
-          <div class="stats">
-            <div class="label">Tagline:</div>
-            <div class="value">
-              {{ singleTvShow.tagline }}
-            </div>
-          </div>
           <div class="stats">
             <div class="label">Release Date:</div>
             <div class="value">
@@ -68,11 +65,7 @@
       <div class="grid">
         <ng-container *ngFor="let tvShow of tvShowVideos">
           <div class="col-12 md:col-4 lg:col-4">
-            <comp-iframe
-              [site]="tvShow.site"
-              [key]="tvShow.key"
-              [title]="tvShow.name"
-            ></comp-iframe>
+            <comp-iframe [site]="tvShow.site" [key]="tvShow.key"></comp-iframe>
           </div>
         </ng-container>
       </div>
@@ -92,7 +85,7 @@
       </div>
     </p-tabPanel>
   </p-tabView>
-  <p-carousel
+  <!-- <p-carousel
     *ngIf="tvShowCredits"
     [value]="tvShowCredits.cast"
     [numVisible]="5"
@@ -112,9 +105,9 @@
         >
       </div>
     </ng-template>
-  </p-carousel>
-  <div class="container similar">
-    <h2>Similar Movies</h2>
+  </p-carousel> -->
+  <!-- <div class="container similar">
+    <h2>Similar Tv Shows</h2>
     <div class="grid">
       <div
         class="col-6 md:col-3 lg:col-3"
@@ -123,5 +116,5 @@
         <comp-item [item]="tvShow"></comp-item>
       </div>
     </div>
-  </div>
+  </div> -->
 </ng-container>

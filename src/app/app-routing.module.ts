@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: 'movies/genres/:genreId', component: MoviesComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'genres', component: GenresComponent },
-  { path: 'tv-shows', component: TvShowsComponent },
-  { path: 'tv-shows/genres/:genreId', component: TvShowsComponent },
-  { path: 'tv-shows/:id', component: TvShowDetailComponent },
+  { path: 'tvshows', component: TvShowsComponent },
+  { path: 'tvshow/:id', component: TvShowDetailComponent },
+  { path: 'tvshows/genres/:genreId', component: TvShowsComponent },
   // { path: '404', component: ErrorPageComponent },
   { path: '**', redirectTo: '' },
 ];

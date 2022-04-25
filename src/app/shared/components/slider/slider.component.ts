@@ -1,4 +1,4 @@
-import { Movie } from './../../../core/models/movie';
+import { Item } from '../items-banner/item/Item';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   animate,
@@ -20,7 +20,7 @@ import {
   ],
 })
 export class SliderComponent implements OnInit {
-  @Input() movies: Movie[] = [];
+  @Input() items: Item[] = [];
   currentSlideIndex: number = 0;
   @Input() isBanner: boolean = false;
 
@@ -29,7 +29,7 @@ export class SliderComponent implements OnInit {
   ngOnInit(): void {
     if (!this.isBanner) {
       setInterval(() => {
-        this.currentSlideIndex = ++this.currentSlideIndex % this.movies.length;
+        this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
       }, 5000);
     }
   }

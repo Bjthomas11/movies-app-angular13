@@ -1,7 +1,14 @@
+import { Item } from '../../components/items-banner/item/Item';
 import { first } from 'rxjs';
 import { TvShowsService } from './../../../core/services/tv-shows/tv-shows.service';
 import { ActivatedRoute } from '@angular/router';
-import { Tv, TvVideo, TvImages, TvCredits } from './../../../core/models/tv';
+import {
+  mapTvShowToItem,
+  TvShow,
+  TvShowCredits,
+  TvShowImages,
+  TvShowVideo,
+} from './../../../core/models/tv';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,11 +17,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tv-show-detail.component.scss'],
 })
 export class TvShowDetailComponent implements OnInit {
-  singleTvShow: Tv | null = null;
-  tvShowVideos: TvVideo[] = [];
-  tvShowImages: TvImages | null = null;
-  tvShowCredits: TvCredits | null = null;
-  similarTvShows: Tv[] | null = null;
+  singleTvShow: TvShow | null = null;
+  tvShowBanner: Item | null = null;
+  tvShowVideos: TvShowVideo[] = [];
+  tvShowImages: TvShowImages | null = null;
+  tvShowCredits: TvShowCredits | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +34,6 @@ export class TvShowDetailComponent implements OnInit {
       this.getTvShowVideos(id);
       this.getTvShowImages(id);
       this.getTvShowCredits(id);
-      this.getSimilarTvShows(id);
     });
   }
 
@@ -37,6 +43,7 @@ export class TvShowDetailComponent implements OnInit {
 
   getTvShow(id: string) {
     this.tvShowsService.getTvShowDetail(id).subscribe((tvShow: any) => {
+      this.tvShowBanner = mapTvShowToItem(tvShow);
       this.singleTvShow = tvShow;
     });
   }
@@ -60,12 +67,6 @@ export class TvShowDetailComponent implements OnInit {
   getTvShowCredits(id: string) {
     this.tvShowsService.getTvShowDetailCredits(id).subscribe((credit: any) => {
       this.tvShowCredits = credit;
-    });
-  }
-
-  getSimilarTvShows(id: string) {
-    this.tvShowsService.getSimilarTvShows(id).subscribe((similar: any) => {
-      this.similarTvShows = similar;
     });
   }
 }

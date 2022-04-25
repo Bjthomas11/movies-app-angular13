@@ -22,8 +22,9 @@ export class IframeComponent implements OnInit {
         break;
       case 'Vimeo':
         this.videoURL = this.getSafeURL(
-          'https://player.vimeo.com/video/' + this.key
+          'https://www.vimeo.com/embed/' + this.key
         );
+        break;
     }
   }
 

@@ -1,5 +1,5 @@
 <ng-container *ngIf="singleMovie">
-  <comp-slider [movies]="[singleMovie]" [isBanner]="true"></comp-slider>
+  <comp-slider [items]="[singleMovie]" [isBanner]="true"></comp-slider>
   <p-tabView>
     <p-tabPanel header="Overview">
       <div class="grid">
@@ -16,12 +16,12 @@
         <div class="col-12 md:col-9 lg:col-9">
           <h2>Overview</h2>
           <p class="overview">{{ singleMovie.overview }}</p>
-          <div class="stats">
+          <!-- <div class="stats">
             <div class="label">Tagline:</div>
             <div class="value">
               {{ singleMovie.tagline }}
             </div>
-          </div>
+          </div> -->
           <div class="stats">
             <div class="label">Release Date:</div>
             <div class="value">
@@ -68,11 +68,7 @@
       <div class="grid">
         <ng-container *ngFor="let movie of movieVideos">
           <div class="col-12 md:col-4 lg:col-4">
-            <comp-iframe
-              [site]="movie.site"
-              [key]="movie.key"
-              [title]="movie.name"
-            ></comp-iframe>
+            <comp-iframe [site]="movie.site" [key]="movie.key"></comp-iframe>
           </div>
         </ng-container>
       </div>

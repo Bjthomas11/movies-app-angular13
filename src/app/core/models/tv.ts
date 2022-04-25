@@ -1,71 +1,68 @@
-import { Movie } from './movie';
+import { Item } from '../../shared/components/items-banner/item/Item';
+import { Genre } from './movie';
 
-// export interface Tv extends Movie {}
-
-// export interface TvDto {
-//   page: number;
-//   results: Tv[];
-//   total_results: number;
-//   total_pages: number;
-// }
-
-export interface Tv {
+export interface TvShow {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
   id: number;
+  original_language: string;
   original_title: string;
   overview: string;
   popularity: number;
   poster_path: string;
   release_date: string;
-  title: string;
+  name: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
-  page: number;
-  results: Tv[];
-  total_results: number;
-  total_pages: number;
-  original_language: string;
   revenue: number;
-  status: string;
   runtime: number;
-  tagline: string;
+  status: string;
   genres: Genre[];
+  title: string;
 }
-export interface TvDto {
+
+export interface TvShowDto {
   page: number;
-  results: Tv[];
+  results: TvShow[];
   total_results: number;
   total_pages: number;
 }
 
-export interface Genre {
+export interface TvShowVideoDto {
   id: number;
-  name: string;
+  results: TvShowVideo[];
 }
 
-export interface SingleTvideos {
-  id: number;
-  results: TvVideo;
-}
-
-export interface TvVideo {
-  key: string;
+export interface TvShowVideo {
   site: string;
-  name: string;
+  key: string;
 }
 
-export interface TvImages {
+export interface TvShowImages {
   backdrops: {
     file_path: string;
   }[];
 }
 
-export interface TvCredits {
+export interface TvShowCredits {
   cast: {
     name: string;
     profile_path: string;
   }[];
 }
+
+export const mapTvShowToItem = (tvShow: TvShow): Item => {
+  return {
+    id: tvShow.id,
+    title: tvShow.name,
+    poster_path: tvShow.poster_path,
+    vote_average: tvShow.vote_average,
+    backdrop_path: tvShow.backdrop_path,
+    vote_count: tvShow.vote_count,
+    release_date: tvShow.release_date,
+    overview: tvShow.overview,
+    routePath: '/tvshow/' + tvShow.id,
+  };
+};

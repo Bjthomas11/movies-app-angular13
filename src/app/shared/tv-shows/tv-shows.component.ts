@@ -1,5 +1,5 @@
 import { take } from 'rxjs';
-import { Tv } from './../../core/models/tv';
+import { TvShow } from './../../core/models/tv';
 import { TvShowsService } from './../../core/services/tv-shows/tv-shows.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tv-shows.component.scss'],
 })
 export class TvShowsComponent implements OnInit {
-  tvShows: Tv[] = [];
+  tvShows: TvShow[] = [];
   genreId: string | null = null;
   searchText: string = '';
 
@@ -32,18 +32,20 @@ export class TvShowsComponent implements OnInit {
   }
 
   getPaginatedTvShows(page: number, searchText?: string) {
-    this.tvShowsService.searchTvShows(page, searchText).subscribe((tvShow) => {
-      this.tvShows = tvShow;
+    this.tvShowsService.searchTvShows(page, searchText).subscribe((tvShows) => {
+      this.tvShows = tvShows;
     });
   }
 
   getTvShowsByGenre(genreId: string, page: number) {
-    this.tvShowsService.getTvShowsByGenre(genreId, page).subscribe((tvShow) => {
-      this.tvShows = tvShow;
-    });
+    this.tvShowsService
+      .getTvShowsByGenre(genreId, page)
+      .subscribe((tvShows) => {
+        this.tvShows = tvShows;
+      });
   }
 
-  paginateMovies(event: any) {
+  paginateTvShows(event: any) {
     const pageNumber = event.page + 1;
     if (this.genreId) {
       this.getTvShowsByGenre(this.genreId, pageNumber);

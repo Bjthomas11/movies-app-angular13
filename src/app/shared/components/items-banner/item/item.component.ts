@@ -1,4 +1,4 @@
-import { Movie } from './../../../../core/models/movie';
+import { Item } from './Item';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-  @Input() item: Movie | null = null;
+  @Input() item: Item | null = null;
   constructor() {}
 
   ngOnInit(): void {}

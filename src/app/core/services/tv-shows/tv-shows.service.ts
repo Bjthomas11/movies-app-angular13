@@ -1,8 +1,13 @@
-import { TvDto } from './../../models/tv';
+import {
+  TvShowDto,
+  TvShow,
+  TvShowVideoDto,
+  TvShowCredits,
+  TvShowImages,
+} from './../../models/tv';
 import {
   Movie,
   MovieDto,
-  SingleMovieVideos,
   MovieImages,
   MovieCredits,
 } from './../../models/movie';
@@ -18,10 +23,28 @@ import { GenresDto } from '../../models/genre';
 export class TvShowsService {
   constructor(private http: HttpClient) {}
 
-  getTvShows(type: string, count: number = 12) {
+  getTvShows(type: string = 'upcoming', count: number = 12) {
     return this.http
-      .get<TvDto>(
+      .get<TvShowDto>(
         `${environment.BASE_URL}/tv/${type}?api_key=${environment.KEY}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results.slice(0, count));
+        })
+      );
+  }
+
+  getTvShowDetail(id: string) {
+    return this.http.get<TvShow>(
+      `${environment.BASE_URL}/tv/${id}?api_key=${environment.KEY}`
+    );
+  }
+
+  getTvShowDetailVideo(id: string) {
+    return this.http
+      .get<TvShowVideoDto>(
+        `${environment.BASE_URL}/tv/${id}/videos?api_key=${environment.KEY}`
       )
       .pipe(
         switchMap((res) => {
@@ -30,33 +53,21 @@ export class TvShowsService {
       );
   }
 
-  getTvShowDetail(id: string) {
-    return this.http.get<Movie>(
-      `${environment.BASE_URL}/tv/${id}?api_key=${environment.KEY}`
-    );
-  }
-
-  getTvShowDetailVideo(id: string) {
-    return this.http.get<SingleMovieVideos>(
-      `${environment.BASE_URL}/tv/${id}/videos?api_key=${environment.KEY}`
-    );
-  }
-
   getTvShowDetailImages(id: string) {
-    return this.http.get<MovieImages>(
+    return this.http.get<TvShowImages>(
       `${environment.BASE_URL}/tv/${id}/images?api_key=${environment.KEY}`
     );
   }
 
   getTvShowDetailCredits(id: string) {
-    return this.http.get<MovieCredits>(
+    return this.http.get<TvShowCredits>(
       `${environment.BASE_URL}/tv/${id}/credits?api_key=${environment.KEY}`
     );
   }
 
   getSimilarTvShows(id: string) {
     return this.http
-      .get<MovieDto>(
+      .get<TvShowDto>(
         `${environment.BASE_URL}/tv/${id}/similar?api_key=${environment.KEY}`
       )
       .pipe(
@@ -69,7 +80,7 @@ export class TvShowsService {
   getTvShowsGenres() {
     return this.http
       .get<GenresDto>(
-        `${environment.BASE_URL}/genre/movie/list?api_key=${environment.KEY}`
+        `${environment.BASE_URL}/genre/tv/list?api_key=${environment.KEY}`
       )
       .pipe(
         switchMap((res) => {
@@ -80,8 +91,8 @@ export class TvShowsService {
 
   getTvShowsByGenre(genreId: string, pageNumber: number) {
     return this.http
-      .get<MovieDto>(
-        `${environment.BASE_URL}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${environment.KEY}`
+      .get<TvShowDto>(
+        `${environment.BASE_URL}/discover/tv?with_genres=${genreId}&page=${pageNumber}&api_key=${environment.KEY}`
       )
       .pipe(
         switchMap((res) => {
@@ -91,9 +102,9 @@ export class TvShowsService {
   }
 
   searchTvShows(page: number, searchText?: string) {
-    const uri = searchText ? '/search/movie' : '/movie/popular';
+    const uri = searchText ? '/search/tv' : '/tv/popular';
     return this.http
-      .get<MovieDto>(
+      .get<TvShowDto>(
         `${environment.BASE_URL}${uri}?page=${page}&query=${searchText}&api_key=${environment.KEY}`
       )
       .pipe(
