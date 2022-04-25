@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="grid">
+    <div class="col-12">
+      <div class="p-fluid">
+        <span class="p-input-icon-right">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            pInputText
+            placeholder="Search"
+            [(ngModel)]="searchText"
+            (change)="searchInputChanged()"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-6 md:col-3 lg:col-3" *ngFor="let tvShow of tvShows">
+      <comp-item [item]="tvShow"></comp-item>
+    </div>
+  </div>
+  <ng-container>
+    <p-paginator
+      [rows]="20"
+      [totalRecords]="10000"
+      (onPageChange)="paginateMovies($event)"
+    ></p-paginator>
+  </ng-container>
+</div>

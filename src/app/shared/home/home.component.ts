@@ -1,3 +1,4 @@
+import { TvShowsService } from './../../core/services/tv-shows/tv-shows.service';
 import { Tv } from './../../core/models/tv';
 
 import { Movie } from './../../core/models/movie';
@@ -14,8 +15,13 @@ export class HomeComponent implements OnInit {
   upcomingMovies: Movie[] = [];
   topRatedMovies: Movie[] = [];
   popularTvShows: Tv[] = [];
+  latestTvShows: Tv[] = [];
+  topRatedTvShows: Tv[] = [];
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(
+    private moviesService: MoviesService,
+    private tvShowsService: TvShowsService
+  ) {}
 
   ngOnInit(): void {
     this.moviesService.getMovies('popular').subscribe((data: any) => {
@@ -27,8 +33,16 @@ export class HomeComponent implements OnInit {
     this.moviesService.getMovies('top_rated').subscribe((data: any) => {
       this.topRatedMovies = data;
     });
-    this.moviesService.getTvShows('popular').subscribe((data: any) => {
+    this.tvShowsService.getTvShows('popular').subscribe((data: any) => {
       this.popularTvShows = data;
+    });
+
+    this.tvShowsService.getTvShows('latest').subscribe((data: any) => {
+      this.latestTvShows = data;
+    });
+
+    this.tvShowsService.getTvShows('top_rated').subscribe((data: any) => {
+      this.topRatedTvShows = data;
     });
   }
 }

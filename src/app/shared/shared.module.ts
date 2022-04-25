@@ -1,3 +1,4 @@
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './../app-routing.module';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { InputTextModule } from 'primeng/inputtext';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { IframeComponent } from './components/iframe/iframe.component';
+import { TvShowDetailComponent } from './tv-shows/tv-show-detail/tv-show-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { IframeComponent } from './components/iframe/iframe.component';
     ItemComponent,
     MovieDetailComponent,
     IframeComponent,
+    TvShowsComponent,
+    TvShowDetailComponent,
   ],
   exports: [
     HeaderComponent,
