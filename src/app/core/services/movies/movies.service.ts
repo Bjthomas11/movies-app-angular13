@@ -90,10 +90,11 @@ export class MoviesService {
       );
   }
 
-  searchMovies(page: number) {
+  searchMovies(page: number, searchText?: string) {
+    const uri = searchText ? '/search/movie' : '/movie/popular';
     return this.http
       .get<MovieDto>(
-        `${environment.BASE_URL}/movie/popular?page=${page}&api_key=${environment.KEY}`
+        `${environment.BASE_URL}${uri}?page=${page}&query=${searchText}&api_key=${environment.KEY}`
       )
       .pipe(
         switchMap((res) => {

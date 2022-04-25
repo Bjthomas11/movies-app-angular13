@@ -12,6 +12,8 @@ import { take } from 'rxjs';
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   genreId: string | null = null;
+  searchText: string = '';
+
   constructor(
     private moviesService: MoviesService,
     private route: ActivatedRoute
@@ -29,8 +31,8 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  getPaginatedMovies(page: number) {
-    this.moviesService.searchMovies(page).subscribe((movie) => {
+  getPaginatedMovies(page: number, searchText?: string) {
+    this.moviesService.searchMovies(page, searchText).subscribe((movie) => {
       this.movies = movie;
     });
   }
@@ -46,7 +48,11 @@ export class MoviesComponent implements OnInit {
     if (this.genreId) {
       this.getMoviesByGenre(this.genreId, pageNumber);
     } else {
-      this.getPaginatedMovies(event.page + 1);
+      this.getPaginatedMovies(pageNumber, this.searchText);
     }
+  }
+
+  searchInputChanged() {
+    this.getPaginatedMovies(1, this.searchText);
   }
 }
